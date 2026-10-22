@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+/* ===========================================================
+   THEME — institutional / forensic records palette
+   Overriding Tailwind's default scales means every existing
+   utility class in the app (blue-600, slate-200, emerald-50 …)
+   is repainted in the new theme automatically.
+   =========================================================== */
+
+@theme {
+  /* Typefaces */
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Arial, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, "Iowan Old Style",
+    "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo,
+    Consolas, "Liberation Mono", monospace;
+
+  /* Neutral — ink, steel and record paper */
+  --color-slate-50:  #EFF2F1;
+  --color-slate-100: #E6EAE8;
+  --color-slate-200: #D6DDDC;
+  --color-slate-300: #C0CACA;
+  --color-slate-400: #8B9BA4;
+  --color-slate-500: #6B7E8C;
+  --color-slate-600: #43535F;
+  --color-slate-700: #33424E;
+  --color-slate-800: #1F2C39;
+  --color-slate-900: #16202B;
+  --color-slate-950: #0E161E;
+
+  /* Gray/zinc/neutral kept in step, in case they are used anywhere */
+  --color-gray-50:  #EFF2F1;
+  --color-gray-100: #E6EAE8;
+  --color-gray-200: #D6DDDC;
+  --color-gray-300: #C0CACA;
+  --color-gray-400: #8B9BA4;
+  --color-gray-500: #6B7E8C;
+  --color-gray-600: #43535F;
+  --color-gray-700: #33424E;
+  --color-gray-800: #1F2C39;
+  --color-gray-900: #16202B;
+
+  /* Action — service navy, replaces the bright demo blue */
+  --color-blue-50:  #EAEFF6;
+  --color-blue-100: #DCE4F0;
+  --color-blue-200: #BCC9DF;
+  --color-blue-300: #8EA0C0;
+  --color-blue-400: #5C79A5;
+  --color-blue-500: #3A5888;
+  --color-blue-600: #2C4673;
+  --color-blue-700: #23395E;
+  --color-blue-800: #1B2C4A;
+  --color-blue-900: #142238;
+
+  /* Clear / verified — deep forest, not neon mint */
+  --color-emerald-50:  #E4F0EA;
+  --color-emerald-100: #D4E7DD;
+  --color-emerald-200: #B4D2C2;
+  --color-emerald-300: #8DBAA4;
+  --color-emerald-400: #4E9375;
+  --color-emerald-500: #2A7A5B;
+  --color-emerald-600: #1C6549;
+  --color-emerald-700: #15523B;
+  --color-emerald-800: #10402E;
+  --color-emerald-900: #0C3123;
+  --color-green-50:  #E4F0EA;
+  --color-green-100: #D4E7DD;
+  --color-green-600: #1C6549;
+  --color-green-700: #15523B;
+
+  /* Alarm — evidence seal red */
+  --color-red-50:  #F7E9E7;
+  --color-red-100: #F0DBD8;
+  --color-red-200: #E2C3BF;
+  --color-red-300: #D2A29C;
+  --color-red-400: #C0665D;
+  --color-red-500: #B33B31;
+  --color-red-600: #A8261D;
+  --color-red-700: #8B2019;
+  --color-red-800: #6E211B;
+  --color-red-900: #561A15;
+
+  /* Caution — docket amber */
+  --color-amber-50:  #F7EFDE;
+  --color-amber-100: #F0E4C9;
+  --color-amber-200: #E4D2A6;
+  --color-amber-300: #D2B478;
+  --color-amber-400: #B88A2A;
+  --color-amber-500: #9C6C12;
+  --color-amber-600: #8A5A0B;
+  --color-amber-700: #714809;
+  --color-amber-800: #5C3A07;
+  --color-amber-900: #4A2F06;
+  --color-yellow-50:  #F7EFDE;
+  --color-yellow-100: #F0E4C9;
+  --color-yellow-200: #E4D2A6;
+  --color-yellow-600: #8A5A0B;
+  --color-yellow-700: #714809;
+  --color-yellow-800: #5C3A07;
+
+  /* Corners — records systems are square, not bubbly */
+  --radius-xs:  2px;
+  --radius-sm:  2px;
+  --radius-md:  3px;
+  --radius-lg:  3px;
+  --radius-xl:  4px;
+  --radius-2xl: 4px;
+  --radius-3xl: 5px;
+
+  /* Restrained elevation */
+  --shadow-sm: 0 1px 1px rgba(22, 32, 43, 0.04);
+  --shadow-md: 0 1px 2px rgba(22, 32, 43, 0.06);
+  --shadow-lg: 0 2px 6px rgba(22, 32, 43, 0.08);
+  --shadow-xl: 0 4px 14px rgba(22, 32, 43, 0.10);
+  --shadow-2xl: 0 8px 26px rgba(14, 22, 30, 0.22);
+}
+
+/* -----------------------------------------------------------
+   Base
+----------------------------------------------------------- */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background-color: #E6EAE8;
+    color: #16202B;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Headings carry the record-office serif */
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2C4673;
+    outline-offset: 2px;
+  }
+}
+
+/* -----------------------------------------------------------
+   Components
+----------------------------------------------------------- */
+
+@layer components {
+  /* Used by every input / select / textarea (dashboard + auth pages) */
+  .form-input {
+    display: block;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #C0CACA;
+    background-color: #FBFCFC;
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #16202B;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .form-input::placeholder { color: #8B9BA4; }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #2C4673;
+    box-shadow: 0 0 0 3px rgba(44, 70, 115, 0.12);
+  }
+
+  .form-input:disabled {
+    background-color: #EFF2F1;
+    cursor: not-allowed;
+  }
+
+  .form-input[aria-invalid="true"] { border-color: #A8261D; }
+
+  /* Body copy face */
+  .font-brand { font-family: var(--font-sans); }
+
+  /* Hashes, evidence IDs and other literal data */
+  .font-code { font-family: var(--font-mono); letter-spacing: -0.01em; }
+
+  /* Serif, for section headings set as <p> or <span> */
+  .font-record { font-family: var(--font-serif); }
+
+  /* Dark institutional surface: masthead, hero, security band */
+  .surface-navy {
+    background-color: #16202B;
+    background-image:
+      linear-gradient(180deg, rgba(44, 70, 115, 0.16), transparent 55%);
+  }
+
+  /* Faint ledger ruling over dark surfaces */
+  .grid-overlay {
+    background-image:
+      linear-gradient(to right, rgba(201, 210, 211, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(201, 210, 211, 0.055) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Small caps label above section headings */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6B7E8C;
+  }
+
+  /* Status chips: sealed / verified / tampered */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 0.2rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .chip-ok      { color:#1C6549; background:#E4F0EA; border-color:#B4D2C2; }
+  .chip-alarm   { color:#A8261D; background:#F7E9E7; border-color:#E2C3BF; }
+  .chip-wait    { color:#8A5A0B; background:#F7EFDE; border-color:#E4D2A6; }
+  .chip-neutral { color:#43535F; background:#E6EAE8; border-color:#C0CACA; }
+}

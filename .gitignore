@@ -1,0 +1,11 @@
+# Ignore actual evidence files
+storage/*
+
+# Ignore secrets and generated dependencies
+.env
+.env.*
+!.env.example
+node_modules/
+venv/
+.venv/
+__pycache__/
